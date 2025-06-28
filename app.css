@@ -653,12 +653,17 @@ footer .footer-2 {
     }
 
     footer .footer-1 h1 {
-        font-size: 30px;
+        font-size: 25px;
     }
 
     .icon-footer {
         max-width: 50px;
         margin: 0 auto;
+    }
+
+    footer .footer-1 .icon-sosmed-footer .icon-s{
+        max-width: 30px;
+        height: auto;
     }
 
     .icon-footer img {
