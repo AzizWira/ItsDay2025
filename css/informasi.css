@@ -84,7 +84,7 @@
 }
 
 .card-information .title {
-    color: #4B4B4B;
+    color: var(--aksen2);
     font-family: 'Poppins', sans-serif;
     font-size: 24px;
     font-style: normal;
@@ -92,30 +92,36 @@
     line-height: normal;
 }
 
-.card-information p {
-    color: var(--aksen2);
+.card-information p:nth-child(3) {
+    color: var(--sekunder);
     font-family: 'Poppins', sans-serif;
     font-size: 20px;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
+    background-color: var(--aksen2);
+    margin-top: 10px;
+    padding: 5px;
+    border-radius: 10px;
 }
 
 .card-information span {
     font-family: 'Poppins', sans-serif;
 }
 
-.card-information:hover {
+/* .card-information:hover {
     background: var(--aksen2);
     border-radius: 10px;
-}
+} */
 
-.card-information:hover .title {
+/* .card-information:hover .title {
     color: #fff;
-}
+} */
 
 .card-information:hover p:nth-child(3) {
     color: #fff;
+    background-color: var(--aksen1);
+    transition: 0.25s ease-in-out;
 }
 
 .card-information {
@@ -219,10 +225,10 @@
     }
 
     .card-information .title {
-        font-size: 22px;
+        font-size: 20px;
     }
 
-    .card-information p {
+    .card-information p:nth-child(3) {
         font-size: 18px;
     }
 }
@@ -288,11 +294,11 @@
     }
 
     .card-information .title {
-        font-size: 20px;
+        font-size: 18px;
         font-weight: 500;
     }
 
-    .card-information p {
+    .card-information p:nth-child(3) {
         font-size: 16px;
     }
 
