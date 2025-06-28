@@ -221,6 +221,10 @@ nav .wrapper-nav {
     font-size: 20px;
 }
 
+nav .logo-img {
+    max-width: 70px;
+}
+
 @media only screen and (max-width: 700px) {
 
     nav .wrapper-nav {
