@@ -131,6 +131,9 @@
     cursor: pointer;
     text-align: center;
     transition: all 0.2s ease-in-out;
+    border: 1px solid #C4C4C4;
+    border-radius: 20px;
+    padding: 10px;
 }
 
 .img-information img {
