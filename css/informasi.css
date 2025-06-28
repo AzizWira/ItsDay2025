@@ -28,6 +28,19 @@
 .img-header-information img {
     width: 100%;
     height: auto;
+    display: block;
+}
+
+/*  */
+
+.content-information {
+    display: flex;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.content-information .article {
+    width: 75%;
 }
 
 .article h1 {
@@ -47,6 +60,21 @@
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+    text-align: justify;
+}
+
+.content-information .poster-information {
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.poster-information .img img {
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+    display: block;
 }
 
 .con-card-information {
@@ -101,8 +129,9 @@
 
 .img-information img {
     width: 100%;
-    aspect-ratio: 16/9;
+    aspect-ratio: 16/11;
     border-radius: 10px;
+    display: block;
 }
 
 .slick-slide {
@@ -145,7 +174,7 @@
     display: block;
 }
 
-.pagination{
+.pagination {
     display: flex;
     justify-content: flex-end;
     gap: 10px;
@@ -173,6 +202,10 @@
     .slick-slide {
         margin: 0 10px;
     }
+
+    .con-card-information{
+        margin-top: 70px;
+    }
 }
 
 @media only screen and (max-width: 920px) {
@@ -182,15 +215,62 @@
 
     .article p {
         font-size: 18px;
+        margin-top: 15px;
     }
 
     .card-information .title {
         font-size: 22px;
-        font-weight: 500;
     }
 
     .card-information p {
         font-size: 18px;
+    }
+}
+
+@media only screen and (max-width: 850px) {
+    .con-card-information{
+        margin-top: 50px;
+    }
+
+    .content-information .article {
+        width: 70%;
+    }
+
+    .content-information .poster-information {
+        width: 30%;
+    }
+
+    .article h1 {
+        font-size: 20px;
+    }
+
+    .article p {
+        font-size: 16px;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    .content-information {
+        flex-direction: column-reverse;
+        margin-top: 10px;
+        gap: 10px;
+    }
+
+    .content-information .article {
+        width: 100%;
+    }
+
+    .content-information .poster-information {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+    }
+
+    .img-information img {
+        width: 100%;
+        aspect-ratio: 16/9;
+        border-radius: 10px;
     }
 }
 
@@ -200,11 +280,11 @@
     }
 
     .article h1 {
-        font-size: 20px;
+        font-size: 18px;
     }
 
     .article p {
-        font-size: 16px;
+        font-size: 14px;
     }
 
     .card-information .title {
@@ -307,10 +387,11 @@
     font-weight: 500;
 }
 
-.text{
+.text {
     color: #4B4B4B;
     font-family: 'Poppins', sans-serif;
     font-size: 16px;
     font-weight: 400;
 }
+
 /* end popup */
