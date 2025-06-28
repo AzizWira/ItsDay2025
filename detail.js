@@ -1,9 +1,7 @@
-// Ketika dokumen HTML telah dimuat sepenuhnya
+// ===================== BACK TO TOP =====================
 document.addEventListener("DOMContentLoaded", function () {
-  // Temukan elemen "Back to Top"
-  var backToTopBtn = document.getElementById("backToTop");
+  const backToTopBtn = document.getElementById("backToTop");
 
-  // Tampilkan elemen ketika pengguna telah menggulir ke bawah sejauh 50 piksel dari atas
   window.addEventListener("scroll", function () {
     if (window.pageYOffset > 200) {
       backToTopBtn.classList.add("show");
@@ -12,9 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  // Atur tindakan ketika elemen diklik
   backToTopBtn.addEventListener("click", function () {
-    // Gulir halaman ke atas dengan efek smooth
     window.scrollTo({
       top: 0,
       behavior: "smooth",
@@ -22,58 +18,49 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
+// ===================== PERTANYAAN SUPPORT =====================
 document.addEventListener("DOMContentLoaded", function () {
-  if (document.getElementById("supportQuestion")) {
-    document.getElementById("supportQuestion").onclick = function () {
+  const supportBtn = document.getElementById("supportQuestion");
+  if (supportBtn) {
+    supportBtn.onclick = function () {
       window.location.href = "supportQuestion2.html";
     };
   }
 });
 
-// Mendapatkan elemen tombol "Lihat Selengkapnya" dan elemen informasi produk
+// ===================== LIHAT SELENGKAPNYA =====================
 const showMoreBtn = document.getElementById("showMoreBtn");
 const informasiProduct = document.querySelector(".informasi-product");
 
-// Menambahkan event listener untuk tombol "Lihat Selengkapnya"
 showMoreBtn.addEventListener("click", function () {
   informasiProduct.classList.toggle("show");
-  // Memeriksa apakah informasi produk sedang ditampilkan atau tidak
   if (informasiProduct.classList.contains("show")) {
-    // Menampilkan informasi produk dengan efek animasi fadeIn
-    informasiProduct.style.maxHeight = "1000px"; // Mengubah max-height untuk menampilkan informasi
-    informasiProduct.style.animation = "fadeIn 0.3s"; // Atur animasi sesuai kebutuhan
-    showMoreBtn.textContent = "Tutup Selengkapnya..."; // Mengubah teks tombol
+    informasiProduct.style.maxHeight = "1000px";
+    informasiProduct.style.animation = "fadeIn 0.3s";
+    showMoreBtn.textContent = "Tutup Selengkapnya...";
   } else {
-    // Menyembunyikan informasi produk dengan efek animasi fadeOut
-    informasiProduct.style.animation = "fadeOut 0.3s"; // Atur animasi sesuai kebutuhan
+    informasiProduct.style.animation = "fadeOut 0.3s";
     setTimeout(function () {
-      informasiProduct.style.maxHeight = "0"; // Mengubah max-height untuk menyembunyikan informasi
-      showMoreBtn.textContent = "Lihat Selengkapnya...."; // Mengubah teks tombol
-    }, 0); // Waktu animasi
+      informasiProduct.style.maxHeight = "0";
+      showMoreBtn.textContent = "Lihat Selengkapnya...";
+    }, 0);
   }
 });
 
-//
-
+// ===================== PILIH UKURAN =====================
 function focusElement(element) {
-  // Remove focus from all elements with class "card-size"
   const cardSizeElements = document.querySelectorAll(".card-size");
-  cardSizeElements.forEach((el) => {
-    el.classList.remove("focused");
-  });
-
-  // Add focus to the clicked element
+  cardSizeElements.forEach((el) => el.classList.remove("focused"));
   element.classList.add("focused");
 }
 
-//
-
+// ===================== JUMLAH PRODUK =====================
 const kurangiButton = document.getElementById("kurangi");
 const tambahButton = document.getElementById("tambah");
 const jumlahInput = document.getElementById("jumlah");
 
 kurangiButton.addEventListener("click", () => {
-  if (jumlahInput.value > 0) {
+  if (jumlahInput.value > 1) {
     jumlahInput.value--;
   }
 });
@@ -83,22 +70,16 @@ tambahButton.addEventListener("click", () => {
 });
 
 jumlahInput.addEventListener("change", () => {
-  if (jumlahInput.value < 0) {
-    jumlahInput.value = 0;
+  if (jumlahInput.value < 1) {
+    jumlahInput.value = 1;
   }
 });
 
-document.addEventListener("DOMContentLoaded", function () {
-  const inputJumlah = document.getElementById("jumlah");
-
-  // Validasi input agar hanya menerima angka
-  inputJumlah.addEventListener("input", function () {
-    this.value = this.value.replace(/[^0-9]/g, "");
-  });
+jumlahInput.addEventListener("input", function () {
+  this.value = this.value.replace(/[^0-9]/g, "");
 });
 
-// data review
-
+// ===================== DATA REVIEW & PAGINATION =====================
 const cardReviewElements = [
   {
     nama: "Sarah Anderson Johnson",
@@ -106,10 +87,7 @@ const cardReviewElements = [
     message:
       "Produknya sangat cantik dan berkualitas tinggi! Motifnya benar-benar unik dan saya senang memiliki tenun Troso ini di koleksi saya.",
     date: "15 Agustus 2023",
-    images: [
-      "./assets/best-product/best1.png",
-      "./assets/best-product/best2.png",
-    ],
+    images: ["./assets/best-product/best1.png", "./assets/best-product/best2.png"],
   },
   {
     nama: "Ahmad Al-Mansoori",
@@ -141,10 +119,7 @@ const cardReviewElements = [
     message:
       "Ini adalah hadiah ulang tahun yang sempurna untuk teman saya. Dia sangat senang dengan tenun Troso ini.",
     date: "20 Juli 2023",
-    images: [
-      "./assets/best-product/best6.png",
-      "./assets/best-product/best2.png",
-    ],
+    images: ["./assets/best-product/best6.png", "./assets/best-product/best2.png"],
   },
   {
     nama: "Budi Susanto",
@@ -168,10 +143,7 @@ const cardReviewElements = [
     message:
       "Sangat puas dengan pembelian ini. Motifnya bagus dan proses pengiriman cepat.",
     date: "5 Juli 2023",
-    images: [
-      "./assets/best-product/best1.png",
-      "./assets/best-product/best2.png",
-    ],
+    images: ["./assets/best-product/best1.png", "./assets/best-product/best2.png"],
   },
   {
     nama: "Agus Pranoto",
@@ -193,8 +165,8 @@ const cardReviewElements = [
 
 const itemsPerPage = 3;
 let currentPage = 1;
-
 const PreviewProduct = document.getElementById("con-card-preview");
+const paginationContainer = document.getElementById("pagination");
 
 function renderPage(page) {
   const startIndex = (page - 1) * itemsPerPage;
@@ -203,84 +175,94 @@ function renderPage(page) {
 
   const cardElementsReview = pageData.map(
     (data) => `
-            <div class="card-preview">
-            <div class="header-preview">
-              <div class="header-preview1">
-                <h4>${data.nama}</h4>
-                <p><iconify-icon icon="ic:round-star"></iconify-icon>${
-                  data.rate
-                }</p>
-              </div>
-              <div class="header-preview2">
-                <div class="date">${data.date}</div>
-              </div>
-            </div>
-            <div class="massage-preview">
-              ${data.message}
-            </div>
-            ${
-              data.images.length > 0
-                ? `<div class="con-img-preview">
-                  ${data.images
-                    .map(
-                      (image) => `
-                    <div class="img-preview">
-                      <img src="${image}" alt="" />
-                    </div>
-                  `
-                    )
-                    .join("")}
-                </div>`
-                : ""
-            }
+      <div class="card-preview">
+        <div class="header-preview">
+          <div class="header-preview1">
+            <h4>${data.nama}</h4>
+            <p><iconify-icon icon="ic:round-star"></iconify-icon>${data.rate}</p>
           </div>
-            `
+          <div class="header-preview2">
+            <div class="date">${data.date}</div>
+          </div>
+        </div>
+        <div class="massage-preview">${data.message}</div>
+        ${
+          data.images.length > 0
+            ? `<div class="con-img-preview">
+                ${data.images
+                  .map(
+                    (image) => `
+                      <div class="img-preview">
+                        <img src="${image}" alt="" />
+                      </div>
+                    `
+                  )
+                  .join("")}
+              </div>`
+            : ""
+        }
+      </div>`
   );
 
   PreviewProduct.innerHTML = cardElementsReview.join("");
 }
 
 function changePage(newPage) {
-  if (newPage < 1) {
-    newPage = 1;
-  } else if (newPage > Math.ceil(cardReviewElements.length / itemsPerPage)) {
-    newPage = Math.ceil(cardReviewElements.length / itemsPerPage);
-  }
+  const totalPages = Math.ceil(cardReviewElements.length / itemsPerPage);
+
+  if (newPage < 1) newPage = 1;
+  if (newPage > totalPages) newPage = totalPages;
 
   currentPage = newPage;
   renderPage(currentPage);
-
-  const paginationButtons = document.querySelectorAll(".btn-pagination");
-  paginationButtons.forEach((button) => button.classList.remove("active"));
-
-  const activeButton = document.getElementById(`page${currentPage}`);
-  activeButton.classList.add("active");
+  updatePaginationButtons();
 }
 
-const prevPageButton = document.getElementById("prev-page");
-const nextPageButton = document.getElementById("next-page");
+function updatePaginationButtons() {
+  const buttons = paginationContainer.querySelectorAll(".btn-pagination");
+  buttons.forEach((btn) => btn.classList.remove("active"));
 
-prevPageButton.addEventListener("click", () => changePage(currentPage - 1));
-nextPageButton.addEventListener("click", () => changePage(currentPage + 1));
-
-// Generate pagination buttons dynamically based on data length
-const paginationContainer = document.getElementById("pagination");
-const totalPages = Math.ceil(cardReviewElements.length / itemsPerPage);
-for (let i = 2; i <= totalPages; i++) {
-  const pageButton = document.createElement("button");
-  pageButton.classList.add("btn-pagination");
-  pageButton.textContent = i;
-  pageButton.id = `page${i}`;
-  paginationContainer.insertBefore(pageButton, nextPageButton);
-  pageButton.addEventListener("click", () => changePage(i));
+  const activeButton = paginationContainer.querySelector(`#page${currentPage}`);
+  if (activeButton) {
+    activeButton.classList.add("active");
+  }
 }
 
+function setupPagination() {
+  paginationContainer.innerHTML = "";
+
+  const totalPages = Math.ceil(cardReviewElements.length / itemsPerPage);
+
+  const prev = document.createElement("button");
+  prev.classList.add("btn-pagination");
+  prev.id = "prev-page";
+  prev.textContent = "<";
+  prev.addEventListener("click", () => changePage(currentPage - 1));
+  paginationContainer.appendChild(prev);
+
+  for (let i = 1; i <= totalPages; i++) {
+    const btn = document.createElement("button");
+    btn.classList.add("btn-pagination");
+    if (i === currentPage) btn.classList.add("active");
+    btn.textContent = i;
+    btn.id = `page${i}`;
+    btn.addEventListener("click", () => changePage(i));
+    paginationContainer.appendChild(btn);
+  }
+
+  const next = document.createElement("button");
+  next.classList.add("btn-pagination");
+  next.id = "next-page";
+  next.textContent = ">";
+  next.addEventListener("click", () => changePage(currentPage + 1));
+  paginationContainer.appendChild(next);
+}
+
+// Inisialisasi saat halaman dimuat
 renderPage(currentPage);
+setupPagination();
 
-// end of pagination
-
-// data product lainnya
-
+// ===================== PRODUK LAINNYA =====================
 const cardProductLainnyaElements = [
   {
     imgSrc: "./assets/best-product/best1.png",
@@ -314,9 +296,10 @@ const cardProductLainnyaElements = [
 
 const LainnyaProduct = document.getElementById("con-product-lainnya");
 
-const cardElementsLainnya = cardProductLainnyaElements.map(
-  (data) => `
-  <div class="card-product-lainnya" onclick="window.location.href = '${data.direct}';">
+if (LainnyaProduct) {
+  const cardElementsLainnya = cardProductLainnyaElements.map(
+    (data) => `
+    <div class="card-product-lainnya" onclick="window.location.href = '${data.direct}';">
       <div class="img-lainnya">
         <img src="${data.imgSrc}" alt="">
       </div>
@@ -330,8 +313,9 @@ const cardElementsLainnya = cardProductLainnyaElements.map(
           <p>${data.rate}</p>
         </div>
       </div>
-    </div>
-  `
-);
+    </div>`
+  );
 
-LainnyaProduct.innerHTML = cardElementsLainnya.join("");
+  LainnyaProduct.innerHTML = cardElementsLainnya.join("");
+}
+
