@@ -342,6 +342,10 @@
         margin-top: 80px;
     }
 
+    .detail-desc-product .line-subJudul {
+        margin-bottom: 30px;
+    }
+
     .detail-desc-product h2 {
         font-size: 20px;
     }
@@ -354,6 +358,30 @@
         font-size: 18px;
     }
 }
+
+@media only screen and (max-width: 710px) {
+    .detail-desc-product {
+        margin-top: 40px;
+    }
+
+    .detail-desc-product h2 {
+        font-size: 18px;
+    }
+
+    .detail-desc-product p {
+        font-size: 16px;
+    }
+
+    .informasi-product h4 {
+        font-size: 16px;
+    }
+
+    .showMoreBtn {
+        font-size: 16px;
+    }
+}
+
+
 
 /*  */
 
@@ -495,6 +523,10 @@
 }
 
 @media only screen and (max-width: 710px) {
+    .review-product {
+        margin-top: 60px;
+    }
+
     .con-card-preview {
         gap: 10px;
         margin-bottom: 30px;
@@ -506,6 +538,10 @@
 }
 
 @media only screen and (max-width:600px) {
+    .review-product {
+        margin-top: 40px;
+    }
+    
     .con-card-preview {
         margin-bottom: 25px;
     }
@@ -757,7 +793,7 @@
     width: 100%;
 }
 
-@media only screen and (max-width: 820px){
+@media only screen and (max-width: 820px) {
     .question {
         flex-direction: column;
         gap: 10px;
@@ -774,7 +810,7 @@
     }
 }
 
-@media only screen and (max-width: 480px){
+@media only screen and (max-width: 480px) {
     .question {
         padding: 15px;
     }

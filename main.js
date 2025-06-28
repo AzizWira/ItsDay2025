@@ -92,7 +92,7 @@ const cardDataInformation = [
     imgSrc: "./assets/icon/fi-rr-marker.svg",
     title: "Lokasi",
     desc: "Jln. Kyai Daren, Daren, Jepara, Jawa Tengah",
-    link: "https://www.google.com/maps",
+    link: "https://maps.app.goo.gl/8tBu8zQb4ZBdFFx38",
   },
   // Add more card data objects as needed
 ];

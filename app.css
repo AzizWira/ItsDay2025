@@ -774,7 +774,7 @@ textarea {
 }
 
 .btn-success:hover, .btn-edit:hover {
-    background: #E5BA73;
+    background: var(--Aksen1);
     color: #ffffff;
     transition: 0.25s ease-in-out;
 }

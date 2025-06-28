@@ -11,6 +11,9 @@ Link : https://azizwira.github.io/ItsDay2025/
 - Pada beberapa bagian saya menggunakan auto slider dengan animasi 1 sampai 2 detik. jadi bukanlah ngestuck
 - Pada fitur filter saya buat agar Rating dan Produk berhubungan(misal saya milih rate dari yang terendah dari tenun blanket maka yang tampil hanya tenun blanket dari rating terendah)
 - Seacrh pada produk 
+- checkout sudah berfungsi dimana user harus mengisi alamat terlebih dahulu
+- delete pada cart sudah berfungsi dimana bisa menghapus sesuai yang user centang
+- pesan pada cart sudah berfungsi dimana jika belom ada yang dipilih maka tidak dapat melakukan pesanan 
 
 Saya harap dewan juri dan panitia suka dengan design web saya, maaf kalo banyak kekurangan ehehe.
 Terimakasihhh...

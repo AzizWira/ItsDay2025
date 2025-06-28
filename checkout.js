@@ -1,9 +1,7 @@
-// Ketika dokumen HTML telah dimuat sepenuhnya
 document.addEventListener("DOMContentLoaded", function () {
-  // Temukan elemen "Back to Top"
-  var backToTopBtn = document.getElementById("backToTop");
+  // ===================== BACK TO TOP =====================
+  const backToTopBtn = document.getElementById("backToTop");
 
-  // Tampilkan elemen ketika pengguna telah menggulir ke bawah sejauh 50 piksel dari atas
   window.addEventListener("scroll", function () {
     if (window.pageYOffset > 200) {
       backToTopBtn.classList.add("show");
@@ -12,55 +10,38 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  // Atur tindakan ketika elemen diklik
   backToTopBtn.addEventListener("click", function () {
-    // Gulir halaman ke atas dengan efek smooth
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   });
-});
 
-const showPopupButton = document.getElementById("btn-create");
-const showPopupEdit = document.getElementById("btn-edit");
-const popupElement = document.getElementById("popup-success");
+  // ===================== ALAMAT =====================
+  let alamatTerisi = false;
 
-showPopupButton.addEventListener("click", function () {
-  const background = document.querySelector("#popup-success");
-  background.style.display = "flex";
-  const popupSuccess = document.querySelector("#detail-success");
-  popupSuccess.style.display = "flex";
-  popupSuccess.style.animation = "slide-down 0.3s ease-in-out";
-});
+  const showPopupButton = document.getElementById("btn-create");
+  const showPopupEdit = document.getElementById("btn-edit");
 
-showPopupEdit.addEventListener("click", function () {
-  const background = document.querySelector("#popup-edit");
-  background.style.display = "flex";
-  const popupSuccess = document.querySelector("#detail-edit");
-  popupSuccess.style.display = "flex";
-  popupSuccess.style.animation = "slide-down 0.3s ease-in-out";
-});
+  showPopupButton.addEventListener("click", function () {
+    if (!alamatTerisi) {
+      alert("Silakan lengkapi alamat pengiriman terlebih dahulu.");
+      return;
+    }
 
-function closePopupEdit() {
-  const background = document.querySelector("#popup-edit");
-  setTimeout(() => (background.style.display = "none"), 300);
-  const popupSuccess = document.querySelector("#detail-edit");
-  setTimeout(() => (popupSuccess.style.display = "none"), 250);
-  popupSuccess.style.animation = "slide-up 0.3s ease-in-out";
-  setTimeout(() => (window.location.href = "checkout.html"), 300);
-}
+    const background = document.querySelector("#popup-success");
+    const popupSuccess = document.querySelector("#detail-success");
+    background.style.display = "flex";
+    popupSuccess.style.display = "flex";
+    popupSuccess.style.animation = "slide-down 0.3s ease-in-out";
+  });
 
-function closePopup() {
-  const background = document.querySelector("#popup-success");
-  setTimeout(() => (background.style.display = "none"), 300);
-  const popupSuccess = document.querySelector("#detail-success");
-  setTimeout(() => (popupSuccess.style.display = "none"), 250);
-  popupSuccess.style.animation = "slide-up 0.3s ease-in-out";
-  setTimeout(() => (window.location.href = "index.html"), 300);
-}
+  showPopupEdit.addEventListener("click", function () {
+    const background = document.querySelector("#popup-edit");
+    const popupEdit = document.querySelector("#detail-edit");
+    background.style.display = "flex";
+    popupEdit.style.display = "flex";
+    popupEdit.style.animation = "slide-down 0.3s ease-in-out";
+  });
 
-document.addEventListener("DOMContentLoaded", function () {
+  // ===================== METODE PEMBAYARAN =====================
   const buttons = document.querySelectorAll(".con-btn-payment button");
   const paymentOptionsContainer = document.getElementById("paymentOptions");
 
@@ -75,10 +56,11 @@ document.addEventListener("DOMContentLoaded", function () {
     createCard() {
       const card = document.createElement("div");
       card.classList.add("card-payment");
-      card.style.display = "none"; // Awalnya sembunyikan semua kartu
+      card.style.display = "none";
 
       const imgContainer = document.createElement("div");
       imgContainer.classList.add("img-payment");
+
       const img = document.createElement("img");
       img.src = this.imageSrc;
       imgContainer.appendChild(img);
@@ -89,6 +71,10 @@ document.addEventListener("DOMContentLoaded", function () {
       card.appendChild(imgContainer);
       card.appendChild(p);
       paymentOptionsContainer.appendChild(card);
+
+      card.addEventListener("click", () => {
+        updateSelectedPayment(this.methods[0], this.imageSrc, this.name);
+      });
 
       return card;
     }
@@ -122,27 +108,36 @@ document.addEventListener("DOMContentLoaded", function () {
     new CardPayment(["EMoney"], "./assets/option-payment/gopay.png", "GOPAY"),
     new CardPayment(["EMoney"], "./assets/option-payment/dana.png", "DANA"),
     new CardPayment(["EMoney"], "./assets/option-payment/ovo.png", "OVO"),
-    new CardPayment(["KartuKredit"], "./assets/option-payment/bca.png", "Bank BCA"),
-    new CardPayment(["KartuKredit"], "./assets/option-payment/bni.png", "Bank BNI"),
-    new CardPayment(["KartuKredit"], "./assets/option-payment/bri.png", "Bank BRI"),
+    new CardPayment(
+      ["KartuKredit"],
+      "./assets/option-payment/bca.png",
+      "Bank BCA"
+    ),
+    new CardPayment(
+      ["KartuKredit"],
+      "./assets/option-payment/bni.png",
+      "Bank BNI"
+    ),
+    new CardPayment(
+      ["KartuKredit"],
+      "./assets/option-payment/bri.png",
+      "Bank BRI"
+    ),
   ];
 
-  // Fungsi untuk menampilkan kartu pembayaran berdasarkan metode yang dipilih
   function showPaymentOptions(selectedMethod) {
-    cardPayments.forEach((cardPayment) => {
-      if (cardPayment.methods.includes(selectedMethod)) {
-        cardPayment.show();
+    cardPayments.forEach((card) => {
+      if (card.methods.includes(selectedMethod)) {
+        card.show();
       } else {
-        cardPayment.hide();
+        card.hide();
       }
     });
   }
 
   buttons.forEach((button) => {
     button.addEventListener("click", function () {
-      // Menghapus kelas 'active' dari semua tombol
       buttons.forEach((btn) => btn.classList.remove("active"));
-      // Menambahkan kelas 'active' ke tombol yang diklik
       this.classList.add("active");
 
       const selectedMethod = this.getAttribute("data-method");
@@ -150,8 +145,65 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // Menampilkan kartu pembayaran berdasarkan metode yang aktif pada awalnya
   const activeButton = document.querySelector(".con-btn-payment .active");
-  const activeMethod = activeButton.getAttribute("data-method");
-  showPaymentOptions(activeMethod);
+  if (activeButton) {
+    const activeMethod = activeButton.getAttribute("data-method");
+    showPaymentOptions(activeMethod);
+  }
+
+  // ===================== POPUP FUNCTIONS =====================
+
+  // Menyimpan alamat dari input user
+  window.saveAddress = function () {
+    const nama = document.getElementById("input-nama").value.trim();
+    const nomor = document.getElementById("input-hp").value.trim();
+    const alamat = document.getElementById("input-alamat").value.trim();
+
+    if (!nama || !nomor || !alamat) {
+      alert("Harap isi semua kolom alamat.");
+      return;
+    }
+
+    document.getElementById(
+      "buyer-info"
+    ).textContent = `Nama : ${nama} | Nomor Hp : ${nomor}`;
+    document.getElementById("location-info").textContent = `Lokasi : ${alamat}`;
+    alamatTerisi = true;
+
+    closePopupEdit();
+  };
+
+  // Menutup popup edit (tanpa menyimpan)
+  window.closePopupEdit = function () {
+    const background = document.querySelector("#popup-edit");
+    const popup = document.querySelector("#detail-edit");
+    popup.style.animation = "slide-up 0.3s ease-in-out";
+    setTimeout(() => {
+      background.style.display = "none";
+      popup.style.display = "none";
+    }, 300);
+  };
+
+  // Menutup popup sukses lalu redirect
+  window.closePopup = function () {
+    const background = document.querySelector("#popup-success");
+    const popupSuccess = document.querySelector("#detail-success");
+    popupSuccess.style.animation = "slide-up 0.3s ease-in-out";
+
+    setTimeout(() => {
+      background.style.display = "none";
+      popupSuccess.style.display = "none";
+      window.location.href = "index.html";
+    }, 300);
+  };
 });
+
+function updateSelectedPayment(method, imageSrc, label) {
+  const container = document.querySelector(".fix-card-payment");
+
+  // Ganti gambar
+  container.querySelector("img").src = imageSrc;
+
+  // Ganti teks nama metode
+  container.querySelector("p").textContent = label;
+}

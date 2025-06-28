@@ -28,7 +28,7 @@
       <!--end header -->
 
       <!-- address -->
-      <div class="address">
+      <div class="address" id="address-section">
         <div class="title">
           <div>
             <iconify-icon
@@ -46,16 +46,11 @@
           </div>
         </div>
 
-        <p class="buyer">
-          Ahmad Aziz Wira Widodo | <span>(+62) 89123456789</span>
+        <p class="buyer" id="buyer-info">
+          Nama : Belum diisi | Nomor Hp : Belum Diisi
         </p>
-
-        <p class="location">
-          Rt 10, Rw 12, Prambatan Kidul, Kaliwungu, Kudus, Jawa Tengah, KAB
-          KUDUS - KALIWUNGU, JAWA TENGAH, ID 593774
-        </p>
+        <p class="location" id="location-info">Lokasi : Belum ada alamat</p>
       </div>
-      <!-- end address -->
 
       <!-- list product -->
 
@@ -143,7 +138,10 @@
       <!-- end box payment -->
 
       <div class="backToTop" id="backToTop">
-        <iconify-icon icon="eva:arrow-back-outline" rotate="90deg"></iconify-icon>
+        <iconify-icon
+          icon="eva:arrow-back-outline"
+          rotate="90deg"
+        ></iconify-icon>
       </div>
     </div>
 
@@ -157,16 +155,10 @@
           onclick="closePopup()"
         ></iconify-icon>
         <div class="image-success">
-          <img
-            src="./assets/success2.gif"
-            alt="Success"
-            class="img-success"
-          />
+          <img src="./assets/success2.gif" alt="Success" class="img-success" />
         </div>
         <p class="desc-success">Pesanan berhasil di buat😃</p>
-        <button class="btn-success" onclick="closePopup()">
-          Kembali
-        </button>
+        <button class="btn-success" onclick="closePopup()">Kembali</button>
       </div>
     </div>
 
@@ -180,16 +172,10 @@
           onclick="closePopup()"
         ></iconify-icon>
         <div class="image-success">
-          <img
-            src="./assets/success2.gif"
-            alt="Success"
-            class="img-success"
-          />
+          <img src="./assets/success2.gif" alt="Success" class="img-success" />
         </div>
         <p class="desc-success">Alamat berhasil di perbarui</p>
-        <button class="btn-success" onclick="closePopup()">
-          Tutup
-        </button>
+        <button class="btn-success" onclick="closePopup()">Tutup</button>
       </div>
     </div>
 
@@ -203,12 +189,12 @@
           onclick="closePopupEdit()"
         ></iconify-icon>
         <p>Nama penerima</p>
-        <input type="text">
+        <input type="text" id="input-nama" />
         <p>Nomor telepon</p>
-        <input type="text">
+        <input type="number" id="input-hp" />
         <p>Alamat</p>
-        <textarea name="" id="" cols="30" rows="5"></textarea>
-        <button type="submit" class="btn-edit" onclick="closePopupEdit()">
+        <textarea id="input-alamat" cols="30" rows="5"></textarea>
+        <button type="submit" class="btn-edit" onclick="saveAddress()">
           Simpan
         </button>
       </div>

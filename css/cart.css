@@ -42,12 +42,14 @@
 @media only screen and (max-width: 800px) {
     .title-cart {
         font-size: 20px;
+        margin-top: 20px;
     }
 }
 
 @media only screen and (max-width: 600px) {
     .title-cart {
         font-size: 18px;
+        margin-top: 10px;
     }
 }
 

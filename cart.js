@@ -102,35 +102,39 @@ function updateTotal() {
 }
 
 // Fungsi untuk menghapus barang dari keranjang dengan konfirmasi
-function deleteCartItem(id) {
-  // Tampilkan dialog konfirmasi
+function deleteCartItem() {
   const isConfirmed = window.confirm(
-    "Apakah Anda yakin ingin menghapus item ini?"
+    "Apakah Anda yakin ingin menghapus item yang dipilih?"
   );
 
   if (isConfirmed) {
-    const checkboxes = document.querySelectorAll(".pilihan");
-    const isCheckedArray = Array.from(checkboxes).map(
-      (checkbox) => checkbox.checked
-    );
+    // Dapatkan semua checkbox yang dicentang
+    const checkboxes = document.querySelectorAll(".pilihan:checked");
 
-    const index = cardCartElement.findIndex((item) => item.id === id);
-    if (index !== -1) {
-      cardCartElement.splice(index, 1);
-      renderCart();
+    // Ambil ID dari item yang dicentang
+    const idsToDelete = Array.from(checkboxes).map((checkbox, index) => {
+      const cardIndex = Array.from(
+        document.querySelectorAll(".pilihan")
+      ).indexOf(checkbox);
+      return cardCartElement[cardIndex].id;
+    });
 
-      // Setelah menghapus, atur ulang status checkbox
-      checkboxes.forEach((checkbox, index) => {
-        checkbox.checked = isCheckedArray[index];
-      });
-
-      // Update teks "3 Barang" dengan jumlah data dalam array
-      const jumlahBarangParagraph =
-        document.getElementById("jumlahBarangIndex");
-      jumlahBarangParagraph.textContent = `${cardCartElement.length} Barang`;
-
-      updateTotal();
+    // Hapus item dari array `cardCartElement`
+    for (let id of idsToDelete) {
+      const index = cardCartElement.findIndex((item) => item.id === id);
+      if (index !== -1) {
+        cardCartElement.splice(index, 1);
+      }
     }
+
+    // Update tampilan
+    renderCart();
+
+    // Update jumlah
+    const jumlahBarangParagraph = document.getElementById("jumlahBarangIndex");
+    jumlahBarangParagraph.textContent = `${cardCartElement.length} Barang`;
+
+    updateTotal();
   }
 }
 
@@ -207,8 +211,7 @@ function renderCart() {
   const hapusButtons = document.querySelectorAll(".aksi");
   hapusButtons.forEach((button) => {
     button.addEventListener("click", () => {
-      const id = parseInt(button.getAttribute("data-id"));
-      deleteCartItem(id);
+      deleteCartItem(); // ✅ Panggil tanpa argumen
       updateTotal();
     });
   });
@@ -239,23 +242,32 @@ pilihSemuaCheckbox2.addEventListener("change", () => {
 
 // Event listener untuk tombol Checkout
 const checkoutButton = document.querySelector(".checkout-cart");
-checkoutButton.addEventListener("click", () => {
+
+checkoutButton.addEventListener("click", (e) => {
+  e.preventDefault(); // <- ini penting untuk mencegah perilaku default seperti submit form atau pindah halaman
+
   const selectedItems = [];
   const checkboxes = document.querySelectorAll(".pilihan");
+
   checkboxes.forEach((checkbox, index) => {
     if (checkbox.checked) {
       selectedItems.push({
         id: cardCartElement[index].id,
         nama: cardCartElement[index].nama,
-        jumlahBarang: cardCartElement[index].jumlahBarang,
+        jumlahBarang: parseInt(
+          document.getElementById(`jumlah-${cardCartElement[index].id}`).value
+        ),
         harga: cardCartElement[index].harga,
       });
     }
   });
 
-  // Di sini Anda dapat melakukan apa pun dengan item yang dipilih, seperti mengirimkan data ke server atau halaman checkout.
-  // Misalnya:
+  if (selectedItems.length === 0) {
+    alert("Silakan pilih item terlebih dahulu!");
+    return; // Berhenti di sini, tidak lanjut
+  }
+
+  // Data valid, lanjut ke checkout
   console.log("Item yang dipilih:", selectedItems);
-  // Redirect ke halaman checkout
-  // window.location.href = "checkout.html";
+  window.location.href = "checkout.html";
 });
